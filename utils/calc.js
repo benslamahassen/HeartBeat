@@ -1,3 +1,5 @@
+const { appendToQuery } = require("./sqlQuery");
+
 const avg = (data, isOperation) => {
   for (key of Object.keys(data)) {
     let operation, operationType;
@@ -9,6 +11,7 @@ const avg = (data, isOperation) => {
     data[key] =
       data[key].reduce((prev, curr) => prev + curr) / data[key].length;
     log(key, data[key], "Average", isOperation);
+    if (isOperation) appendToQuery(operation, operationType, data[key], "AVG");
   }
   delete data;
 };
@@ -23,6 +26,7 @@ const max = (data, isOperation) => {
     });
     data[key] = Math.max(...data[key]);
     log(key, data[key], "Max", isOperation);
+    if (isOperation) appendToQuery(operation, operationType, data[key], "MIN");
   }
   delete data;
 };
@@ -37,6 +41,7 @@ const min = (data, isOperation) => {
     });
     data[key] = Math.min(...data[key]);
     log(key, data[key], "Min", isOperation);
+    if (isOperation) appendToQuery(operation, operationType, data[key], "MIN");
   }
   delete data;
 };

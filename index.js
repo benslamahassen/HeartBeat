@@ -2,6 +2,7 @@ const read = require("./utils/readFileStream");
 const filter = require("./utils/filterData");
 const groupByOperation = require("./utils/groupByOperation");
 const { avg, max, min } = require("./utils/calc");
+const { writeQuery } = require("./utils/sqlQuery");
 
 const main = async () => {
   const data = await read(
@@ -38,6 +39,8 @@ const main = async () => {
   min(Object.assign({}, filteredData));
   console.log(`5.b What are the min duration times grouped by operation?`);
   min(Object.assign({}, _groupByOperation), 1);
+  writeQuery();
+  console.log('You can find the SQL file for part2 of the task, in the root directory of this project.')
 };
 
 main();

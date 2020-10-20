@@ -1,1 +1,0 @@
-INSERT INTO "GraphqlDurations" ( "operation", "operationType", "duration", "method" ) VALUES
