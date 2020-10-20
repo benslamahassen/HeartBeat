@@ -1,29 +1,51 @@
-const avg = (data) => {
+const avg = (data, isOperation) => {
   for (key of Object.keys(data)) {
-    data[key] = data[key].map((item) => Number(item.duration));
+    let operation, operationType;
+    data[key] = data[key].map((item) => {
+      operation = item.operation;
+      operationType = item.operationType;
+      return Number(item.duration);
+    });
     data[key] =
       data[key].reduce((prev, curr) => prev + curr) / data[key].length;
-    console.log(`      - Operation: ${key} | Avergae time: ${data[key]}`);
+    log(key, data[key], "Average", isOperation);
   }
   delete data;
 };
 
-const max = (data) => {
+const max = (data, isOperation) => {
   for (key of Object.keys(data)) {
-    data[key] = data[key].map((item) => Number(item.duration));
+    let operation, operationType;
+    data[key] = data[key].map((item) => {
+      operation = item.operation;
+      operationType = item.operationType;
+      return Number(item.duration);
+    });
     data[key] = Math.max(...data[key]);
-    console.log(`      - Operation: ${key} | Max time: ${data[key]}`);
+    log(key, data[key], "Max", isOperation);
   }
   delete data;
 };
 
-const min = (data) => {
+const min = (data, isOperation) => {
   for (key of Object.keys(data)) {
-    data[key] = data[key].map((item) => Number(item.duration));
+    let operation, operationType;
+    data[key] = data[key].map((item) => {
+      operation = item.operation;
+      operationType = item.operationType;
+      return Number(item.duration);
+    });
     data[key] = Math.min(...data[key]);
-    console.log(`      - Operation: ${key} | Min time: ${data[key]}`);
+    log(key, data[key], "Min", isOperation);
   }
   delete data;
 };
+
+const log = (key, value, type, isOperation) =>
+  console.log(
+    `      - ${
+      isOperation ? "Operation" : "Operation Type"
+    }: ${key} | ${type} time: ${value}`
+  );
 
 module.exports = { avg, max, min };
