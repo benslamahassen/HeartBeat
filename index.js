@@ -27,17 +27,17 @@ const main = async () => {
   console.log(
     `3.a What are the average duration times grouped by operation type?`
   );
-  avg(Object.assign({}, _groupByOperation));
-  console.log(`3.b What are the average duration times grouped by operation?`);
   avg(Object.assign({}, filteredData));
+  console.log(`3.b What are the average duration times grouped by operation?`);
+  avg(Object.assign({}, _groupByOperation), 1);
   console.log(`4.a What are the max duration times grouped by operation type?`);
-  max(Object.assign({}, _groupByOperation));
-  console.log(`4.b What are the max duration times grouped by operation?`);
   max(Object.assign({}, filteredData));
+  console.log(`4.b What are the max duration times grouped by operation?`);
+  max(Object.assign({}, _groupByOperation), 1);
   console.log(`5.a What are the min duration times grouped by operation type?`);
-  min(Object.assign({}, _groupByOperation));
-  console.log(`5.b What are the min duration times grouped by operation?`);
   min(Object.assign({}, filteredData));
+  console.log(`5.b What are the min duration times grouped by operation?`);
+  min(Object.assign({}, _groupByOperation), 1);
 };
 
 main();
