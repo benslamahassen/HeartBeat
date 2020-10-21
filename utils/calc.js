@@ -26,7 +26,7 @@ const max = (data, isOperation) => {
     });
     data[key] = Math.max(...data[key]);
     log(key, data[key], "Max", isOperation);
-    if (isOperation) appendToQuery(operation, operationType, data[key], "MIN");
+    if (isOperation) appendToQuery(operation, operationType, data[key], "MAX");
   }
   delete data;
 };
